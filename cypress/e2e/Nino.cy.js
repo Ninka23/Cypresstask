@@ -1,16 +1,16 @@
-describe('change account details', () => {
-  before(() => {
+describe('edit account details', () => {
+  it('passes', () => {
 
      //მომხმარებლის დეტალების შეცვლა - ც+შეამოწმეთ
 //რომ შენახვის შემდეგ ცვლილებები შეინახა.
 // 1. შევდივართ ვებ-გვერდზე
-  
+cy.visit('https://automationteststore.com');
     // 2. წარმატებით გაიხსნა ვებ გვერდი
-    cy.visit('https://automationteststore.com');
 // 3. უნდა დავლოგინდეთ უკვე არსებულ ექაუნთზე, შეგვყავს იუზერნეიმი და პაროლი
 // ვაკლიკავთ 'დალოგინების' ღილაკს.
-    cy.login('Ninoben', '8765');
+    cy.login('Ninoben', '5678');
   // 4. წარმატებით ჩაიტვირთა "My Account" გვერდი;
+  cy.get('.maintext').should('contain.text','My Account');
   // 5. მომხმარებლის მონაცემების შეცვლის მიზნით, "My Account"-ის მარჯვენა პანელში
   // განთავსებულ სია-ში, ვაკლიკავთ "Edit Account Details".
   cy.get('.side_account_list > :nth-child(3) > a').click();
@@ -38,15 +38,15 @@ describe('change account details', () => {
 
 
 // არსებული მისამართის შეცვლა ან ახალი მისამართის დამატება.
-describe('change adress', () => {
-  before(() => {
-    cy.visit('https://automationteststore.com');
-    cy.login('Ninoben', '8765');
-
 // 1. შევდივართ ვებ-გვერდზე
 // 2. წარმატებით გაიხსნა ვებ გვერდი
 // 3. უნდა დავლოგინდეთ უკვე არსებულ ექაუნთზე, შეგვყავს იუზერნეიმი და პაროლი
 // ვაკლიკავთ 'დალოგინების' ღილაკს.
+
+describe('change adress', () => {
+  it('passes', () => {
+    cy.visit('https://automationteststore.com');
+    cy.login('Ninoben', '5678');
 // 4. წარმატებით ჩაიტვირთა "My Account" გვერდი;
 cy.get('.maintext').should('contain.text','My Account');
 // 5. მომხმარებლის მისამართის შეცვლის მიზნით, "My Account"-ის მარჯვენა პანელში
@@ -70,6 +70,9 @@ cy.get('address').should('contain.text','Shida Kartli');
   })
 });
 
+
+// // პაროლის შეცვლა
+
 // // 1. შევდივართ ვებ-გვერდზე
 describe('password Change', () => {
   it('passes', () => {
@@ -77,16 +80,17 @@ describe('password Change', () => {
  // // 2. ვებ გვერდი წარმატებით ჩაიტვირთა.
  // // 3.უნდა დავლოგინდეთ უკვე არსებულ ექაუნთზე, შეგვყავს იუზერნეიმი და პაროლი
  // // ვაკლიკავთ 'დალოგინების' ღილაკს.
- cy.login('Ninoben', '8765');
+ cy.login('Ninoben', '5678');
  // // 4. წარმატებით ჩაიტვირთა "My Account" გვერდი;
  cy.get('.maintext').should('contain.text','My Account');
  // // 5. მომხმარებლის პაროლის შეცვლის მიზნით, "My Account"-ის მარჯვენა პანელში
  //   // განთავსებულ სია-ში, ვაკლიკავთ "Change Password".
   cy.get('.side_account_list > :nth-child(4) > a').click()
  // // 6. Current Password-ში ვწერთ '12345', New Password-ში და Confirm-ში '54321'
- cy.get('#PasswordFrm_current_password').type('8765');
-
+ cy.get('#PasswordFrm_current_password').type('5678');
+//  cy.get('#PasswordFrm_password').type('5678');
+//   cy.get('#PasswordFrm_confirm').type('5678');
   // 7. შეყვანილი მონაცემების შენახვის მიზნით, ვაკლიკავთ 'continue'-ს;
-  cy.get('.col-md-12 > .btn-orange').click();
+  // cy.get('.col-md-12 > .btn-orange').click();
  })
  })
